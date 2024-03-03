@@ -53,6 +53,6 @@ try {
 
 } catch (error) {
     console.log("error in getMessages ", error);
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ error: error.message });
 }
 };

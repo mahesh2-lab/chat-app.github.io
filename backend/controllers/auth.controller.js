@@ -4,9 +4,9 @@ import genrateTokenAndSetCookie from "../utils/genrateToken.js";
 
 export const signup = async (req, res) => {
   try {
-    const { fullname, username, password, conformPassword, gender } = req.body;
+    const { fullName, username, password, confirmPassword, gender } = req.body;
 
-    if (password !== conformPassword) {
+    if (password !== confirmPassword) {
       return res.status(400).json({ msg: "Password do not match" });
     }
 
@@ -23,7 +23,7 @@ export const signup = async (req, res) => {
     const girlProilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
     const newUser = new User({
-      fullname,
+      fullName,
       username,
       password: hashedPassword,
       gender,
@@ -35,7 +35,7 @@ export const signup = async (req, res) => {
       await newUser.save();
       res.status(201).json({
         _id: newUser._id,
-        fullname: newUser.fullname,
+        fullName: newUser.fullName,
         username: newUser.username,
         profilePic: newUser.profilePic,
       });
@@ -55,12 +55,12 @@ export const login = async (req, res) => {
     const isPasswordCoreect = await bycrypt.compare(password, user?.password || '');
 
     if(!user || !isPasswordCoreect){
-      return res.status(400).json({msg:"Invalid username or password"});
+      return res.status(400).json({error:"Invalid username or password"});
     }
     genrateTokenAndSetCookie(res, user._id);
     res.status(200).json({
       _id: user._id,
-      fullname: user.fullname,
+      fullName: user.fullName,
       username: user.username,
       profilePic: user.profilePic,
     });
