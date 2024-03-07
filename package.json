@@ -1,4 +1,5 @@
 {
+  "homepage": "https://mahesh2-lab.github.io/chat-app.github.io/",
   "name": "chatapp",
   "version": "1.0.0",
   "description": "",
@@ -6,7 +7,9 @@
   "scripts": {
     "server": "nodemon backend/server.js",
     "start" : "node backend/server.js",
-    "build" : "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+    "build" : "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "predeploy": "npm run build",
+    "deploy" : "gh-pages -d frontend/dist"
   },
   "type": "module",
   "keywords": [],
