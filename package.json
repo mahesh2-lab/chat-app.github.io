@@ -6,10 +6,10 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon backend/server.js",
-    "start" : "node backend/server.js",
-    "build" : "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "node backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
     "predeploy": "npm run build",
-    "deploy" : "gh-pages -d frontend/dist"
+    "deploy": "gh-pages -d frontend/dist"
   },
   "type": "module",
   "keywords": [],
@@ -20,6 +20,7 @@
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.4",
     "express": "^4.18.2",
+    "gh-pages": "^6.1.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.1.3",
     "react-hot-toast": "^2.4.1",
